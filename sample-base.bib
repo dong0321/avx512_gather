@@ -1,0 +1,905 @@
+%%% ====================================================================
+%%%  BibTeX-file{
+%%%     author          = "Gerry Murray",
+%%%     version         = "1.2",
+%%%     date            = "2 April 2012",
+%%%     filename        = "acmsmall-sample-bibfile.bib",
+%%%     address         = "ACM, NY",
+%%%     email           = "murray at hq.acm.org",
+%%%     codetable       = "ISO/ASCII",
+%%%     keywords        = "ACM Reference Format, bibliography, citation, references",
+%%%     supported       = "yes",
+%%%     docstring       = "This BibTeX database file contains 'bibdata' entries
+%%%                        that 'match' the examples provided in the Specifications Document
+%%%                        AND, also, 'legacy'-type bibs. It should assist authors in
+%%%                        choosing the 'correct' at-bibtype and necessary bib-fields
+%%%                        so as to obtain the appropriate ACM Reference Format output.
+%%%                        It also contains many 'Standard Abbreviations'. "
+%%%  }
+%%% ====================================================================
+
+% Journals
+
+% First the Full Name is given, then the abbreviation used in the AMS Math
+% Reviews, with an indication if it could not be found there.
+% Note the 2nd overwrites the 1st, so swap them if you want the full name.
+\RequirePackage{filecontents}
+\begin{filecontents}{\sample-base.bib}
+
+
+ %{AMS}
+ @String{AMSTrans = "American Mathematical Society Translations" }
+ @String{AMSTrans = "Amer. Math. Soc. Transl." }
+ @String{BullAMS = "Bulletin of the American Mathematical Society" }
+ @String{BullAMS = "Bull. Amer. Math. Soc." }
+ @String{ProcAMS = "Proceedings of the American Mathematical Society" }
+ @String{ProcAMS = "Proc. Amer. Math. Soc." }
+ @String{TransAMS = "Transactions of the American Mathematical Society" }
+ @String{TransAMS = "Trans. Amer. Math. Soc." }
+
+ %ACM
+ @String{CACM = "Communications of the {ACM}" }
+ @String{CACM = "Commun. {ACM}" }
+ @String{CompServ = "Comput. Surveys" }
+ @String{JACM = "J. ACM" }
+ @String{ACMMathSoft = "{ACM} Transactions on Mathematical Software" }
+ @String{ACMMathSoft = "{ACM} Trans. Math. Software" }
+ @String{SIGNUM = "{ACM} {SIGNUM} Newsletter" }
+ @String{SIGNUM = "{ACM} {SIGNUM} Newslett." }
+
+ @String{AmerSocio = "American Journal of Sociology" }
+ @String{AmerStatAssoc = "Journal of the American Statistical Association" }
+ @String{AmerStatAssoc = "J. Amer. Statist. Assoc." }
+ @String{ApplMathComp = "Applied Mathematics and Computation" }
+ @String{ApplMathComp = "Appl. Math. Comput." }
+ @String{AmerMathMonthly = "American Mathematical Monthly" }
+ @String{AmerMathMonthly = "Amer. Math. Monthly" }
+ @String{BIT = "{BIT}" }
+ @String{BritStatPsych = "British Journal of Mathematical and Statistical
+          Psychology" }
+ @String{BritStatPsych = "Brit. J. Math. Statist. Psych." }
+ @String{CanMathBull = "Canadian Mathematical Bulletin" }
+ @String{CanMathBull = "Canad. Math. Bull." }
+ @String{CompApplMath = "Journal of Computational and Applied Mathematics" }
+ @String{CompApplMath = "J. Comput. Appl. Math." }
+ @String{CompPhys = "Journal of Computational Physics" }
+ @String{CompPhys = "J. Comput. Phys." }
+ @String{CompStruct = "Computers and Structures" }
+ @String{CompStruct = "Comput. \& Structures" }
+ @String{CompJour = "The Computer Journal" }
+ @String{CompJour = "Comput. J." }
+ @String{CompSysSci = "Journal of Computer and System Sciences" }
+ @String{CompSysSci = "J. Comput. System Sci." }
+ @String{Computing = "Computing" }
+ @String{ContempMath = "Contemporary Mathematics" }
+ @String{ContempMath = "Contemp. Math." }
+ @String{Crelle = "Crelle's Journal" }
+ @String{GiornaleMath = "Giornale di Mathematiche" }
+ @String{GiornaleMath = "Giorn. Mat." } % didn't find in AMS MR., ibid.
+
+ %IEEE
+ @String{Computer = "{IEEE} Computer" }
+ @String{IEEETransComp = "{IEEE} Transactions on Computers" }
+ @String{IEEETransComp = "{IEEE} Trans. Comput." }
+ @String{IEEETransAC = "{IEEE} Transactions on Automatic Control" }
+ @String{IEEETransAC = "{IEEE} Trans. Automat. Control" }
+ @String{IEEESpec = "{IEEE} Spectrum" } % didn't find in AMS MR
+ @String{ProcIEEE = "Proceedings of the {IEEE}" }
+ @String{ProcIEEE = "Proc. {IEEE}" } % didn't find in AMS MR
+ @String{IEEETransAeroElec = "{IEEE} Transactions on Aerospace and Electronic
+     Systems" }
+ @String{IEEETransAeroElec = "{IEEE} Trans. Aerospace Electron. Systems" }
+
+ @String{IMANumerAna = "{IMA} Journal of Numerical Analysis" }
+ @String{IMANumerAna = "{IMA} J. Numer. Anal." }
+ @String{InfProcLet = "Information Processing Letters" }
+ @String{InfProcLet = "Inform. Process. Lett." }
+ @String{InstMathApp = "Journal of the Institute of Mathematics and
+     its Applications" }
+ @String{InstMathApp = "J. Inst. Math. Appl." }
+ @String{IntControl = "International Journal of Control" }
+ @String{IntControl = "Internat. J. Control" }
+ @String{IntNumerEng = "International Journal for Numerical Methods in
+     Engineering" }
+ @String{IntNumerEng = "Internat. J. Numer. Methods Engrg." }
+ @String{IntSuper = "International Journal of Supercomputing Applications" }
+ @String{IntSuper = "Internat. J. Supercomputing Applic." } % didn't find
+%% in AMS MR
+ @String{Kibernetika = "Kibernetika" }
+ @String{JResNatBurStand = "Journal of Research of the National Bureau
+     of Standards" }
+ @String{JResNatBurStand = "J. Res. Nat. Bur. Standards" }
+ @String{LinAlgApp = "Linear Algebra and its Applications" }
+ @String{LinAlgApp = "Linear Algebra Appl." }
+ @String{MathAnaAppl = "Journal of Mathematical Analysis and Applications" }
+ @String{MathAnaAppl = "J. Math. Anal. Appl." }
+ @String{MathAnnalen = "Mathematische Annalen" }
+ @String{MathAnnalen = "Math. Ann." }
+ @String{MathPhys = "Journal of Mathematical Physics" }
+ @String{MathPhys = "J. Math. Phys." }
+ @String{MathComp = "Mathematics of Computation" }
+ @String{MathComp = "Math. Comp." }
+ @String{MathScand = "Mathematica Scandinavica" }
+ @String{MathScand = "Math. Scand." }
+ @String{TablesAidsComp = "Mathematical Tables and Other Aids to Computation" }
+ @String{TablesAidsComp = "Math. Tables Aids Comput." }
+ @String{NumerMath = "Numerische Mathematik" }
+ @String{NumerMath = "Numer. Math." }
+ @String{PacificMath = "Pacific Journal of Mathematics" }
+ @String{PacificMath = "Pacific J. Math." }
+ @String{ParDistComp = "Journal of Parallel and Distributed Computing" }
+ @String{ParDistComp = "J. Parallel and Distrib. Comput." } % didn't find
+%% in AMS MR
+ @String{ParComputing = "Parallel Computing" }
+ @String{ParComputing = "Parallel Comput." }
+ @String{PhilMag = "Philosophical Magazine" }
+ @String{PhilMag = "Philos. Mag." }
+ @String{ProcNAS = "Proceedings of the National Academy of Sciences
+                    of the USA" }
+ @String{ProcNAS = "Proc. Nat. Acad. Sci. U. S. A." }
+ @String{Psychometrika = "Psychometrika" }
+ @String{QuartMath = "Quarterly Journal of Mathematics, Oxford, Series (2)" }
+ @String{QuartMath = "Quart. J. Math. Oxford Ser. (2)" }
+ @String{QuartApplMath = "Quarterly of Applied Mathematics" }
+ @String{QuartApplMath = "Quart. Appl. Math." }
+ @String{RevueInstStat = "Review of the International Statisical Institute" }
+ @String{RevueInstStat = "Rev. Inst. Internat. Statist." }
+
+ %SIAM
+ @String{JSIAM = "Journal of the Society for Industrial and Applied
+     Mathematics" }
+ @String{JSIAM = "J. Soc. Indust. Appl. Math." }
+ @String{JSIAMB = "Journal of the Society for Industrial and Applied
+     Mathematics, Series B, Numerical Analysis" }
+ @String{JSIAMB = "J. Soc. Indust. Appl. Math. Ser. B Numer. Anal." }
+ @String{SIAMAlgMeth = "{SIAM} Journal on Algebraic and Discrete Methods" }
+ @String{SIAMAlgMeth = "{SIAM} J. Algebraic Discrete Methods" }
+ @String{SIAMAppMath = "{SIAM} Journal on Applied Mathematics" }
+ @String{SIAMAppMath = "{SIAM} J. Appl. Math." }
+ @String{SIAMComp = "{SIAM} Journal on Computing" }
+ @String{SIAMComp = "{SIAM} J. Comput." }
+ @String{SIAMMatrix = "{SIAM} Journal on Matrix Analysis and Applications" }
+ @String{SIAMMatrix = "{SIAM} J. Matrix Anal. Appl." }
+ @String{SIAMNumAnal = "{SIAM} Journal on Numerical Analysis" }
+ @String{SIAMNumAnal = "{SIAM} J. Numer. Anal." }
+ @String{SIAMReview = "{SIAM} Review" }
+ @String{SIAMReview = "{SIAM} Rev." }
+ @String{SIAMSciStat = "{SIAM} Journal on Scientific and Statistical
+     Computing" }
+ @String{SIAMSciStat = "{SIAM} J. Sci. Statist. Comput." }
+
+ @String{SoftPracExp = "Software Practice and Experience" }
+ @String{SoftPracExp = "Software Prac. Experience" } % didn't find in AMS MR
+ @String{StatScience = "Statistical Science" }
+ @String{StatScience = "Statist. Sci." }
+ @String{Techno = "Technometrics" }
+ @String{USSRCompMathPhys = "{USSR} Computational Mathematics and Mathematical
+     Physics" }
+ @String{USSRCompMathPhys = "{U. S. S. R.} Comput. Math. and Math. Phys." }
+ @String{VLSICompSys = "Journal of {VLSI} and Computer Systems" }
+ @String{VLSICompSys = "J. {VLSI} Comput. Syst." }
+ @String{ZAngewMathMech = "Zeitschrift fur Angewandte Mathematik und
+     Mechanik" }
+ @String{ZAngewMathMech = "Z. Angew. Math. Mech." }
+ @String{ZAngewMathPhys = "Zeitschrift fur Angewandte Mathematik und Physik" }
+ @String{ZAngewMathPhys = "Z. Angew. Math. Phys." }
+
+% Publishers % ================================================= |
+
+ @String{Academic = "Academic Press" }
+ @String{ACMPress = "{ACM} Press" }
+ @String{AdamHilger = "Adam Hilger" }
+ @String{AddisonWesley = "Addison-Wesley" }
+ @String{AllynBacon = "Allyn and Bacon" }
+ @String{AMS = "American Mathematical Society" }
+ @String{Birkhauser = "Birkha{\"u}ser" }
+ @String{CambridgePress = "Cambridge University Press" }
+ @String{Chelsea = "Chelsea" }
+ @String{ClaredonPress = "Claredon Press" }
+ @String{DoverPub = "Dover Publications" }
+ @String{Eyolles = "Eyolles" }
+ @String{HoltRinehartWinston = "Holt, Rinehart and Winston" }
+ @String{Interscience = "Interscience" }
+ @String{JohnsHopkinsPress = "The Johns Hopkins University Press" }
+ @String{JohnWileySons = "John Wiley and Sons" }
+ @String{Macmillan = "Macmillan" }
+ @String{MathWorks = "The Math Works Inc." }
+ @String{McGrawHill = "McGraw-Hill" }
+ @String{NatBurStd = "National Bureau of Standards" }
+ @String{NorthHolland = "North-Holland" }
+ @String{OxfordPress = "Oxford University Press" }  %address Oxford or London?
+ @String{PergamonPress = "Pergamon Press" }
+ @String{PlenumPress = "Plenum Press" }
+ @String{PrenticeHall = "Prentice-Hall" }
+ @String{SIAMPub = "{SIAM} Publications" }
+ @String{Springer = "Springer-Verlag" }
+ @String{TexasPress = "University of Texas Press" }
+ @String{VanNostrand = "Van Nostrand" }
+ @String{WHFreeman = "W. H. Freeman and Co." }
+
+%Entries
+@ARTICLE{arm_sve17,
+author={N. {Stephens} and S. {Biles} and M. {Boettcher} and J. {Eapen} and M. {Eyole} and G. {Gabrielli} and M. {Horsnell} and G. {Magklis} and A. {Martinez} and N. {Premillieu} and A. {Reid} and A. {Rico} and P. {Walker}},
+journal={IEEE Micro},
+title={{The ARM Scalable Vector Extension}},
+year={2017},
+volume={37},
+number={2},
+pages={26-39},
+keywords={program compilers;programming;vectors;ARM scalable vector extension;SVE;vector processing capability;ARM AArch64 execution state;computational requirements;high-performance computing;data analytics;computer vision;machine learning;CPU designers;vector length;area targets;performance targets;power targets;compiler autovectorization technologies;vector-length agnostic programming model;Scalability;Programming;Computer architecture;Software engineering;Encoding;Vectors;High performance computing;scalable vector architecture;SIMD;data parallelism;instruction set architecture;predication;ARM;SVE;Scalable Vector Extension;HPC;high-performance computing;vector length agnostic;VLA;Vector Length Agnostic;autovectorization},
+doi={10.1109/MM.2017.35},
+ISSN={0272-1732},
+month={Mar},}
+
+@online{acle,
+  author = "ARM",
+  year = "2017",
+  title = {{ARM C Language Extensions for SVE}},
+  url = "https://developer.arm.com/docs/100987/latest/arm-c-language-extensions-for-sve",
+}
+
+@online{armie,
+  author = "Miguel Tairum",
+  year = "2018",
+  title = {{Emulating SVE on existing Armv8-A hardware using DynamoRIO and ArmIE}},
+  url = "https://community.arm.com/developer/tools-software/hpc/b/hpc-blog/posts/emulating-sve-on-armv8-using-dynamorio-and-armie",
+  lastaccessed = "November 5, 2018 "
+}
+
+@online{sve_vla,
+  author = "Francesco Petrogalli",
+  year = "2018",
+  title = {{A sneak peek into SVE and VLA programming}},
+  url = "https://developer.arm.com/solutions/hpc/resources/hpc-white-papers/a-sneak-peek-into-sve-and-vla-programming",
+  lastaccessed = "September, 2018 "
+}
+
+@online{sve_ml,
+    author  =      "Dan Andrei Iliescu",
+    year =         "2018",
+    title =        {{Arm Scalable Vector Extension and application to Machine Learning}},
+    url =          "https://developer.arm.com/solutions/hpc/resources/hpc-white-papers/arm-scalable-vector-extensions-and-application-to-machine-learning",
+    lastaccessed = "October, 2018 "
+}
+
+@article{gem5,
+    author = {Binkert, Nathan and Beckmann, Bradford and Black, Gabriel and Reinhardt, Steven K. and Saidi, Ali and Basu, Arkaprava and Hestness, Joel and Hower, Derek R. and Krishna, Tushar and Sardashti, Somayeh and Sen, Rathijit and Sewell, Korey and Shoaib, Muhammad and Vaish, Nilay and Hill, Mark D. and Wood, David A.},
+    title = {The Gem5 Simulator},
+    journal = {SIGARCH Comput. Archit. News},
+    issue_date = {May 2011},
+    volume = {39},
+    number = {2},
+    month = aug,
+    year = {2011},
+    issn = {0163-5964},
+    pages = {1--7},
+    numpages = {7},
+    url = {http://doi.acm.org/10.1145/2024716.2024718},
+    doi = {10.1145/2024716.2024718},
+    acmid = {2024718},
+    publisher = {ACM},
+    address = {New York, NY, USA},
+}
+
+@INPROCEEDINGS{gem5_arm,
+    author={A. A. {Abudaqa} and T. M. {Al-Kharoubi} and M. F. {Mudawar} and A. {Kobilica}},
+    booktitle={2018 5th International Conference on Electrical and Electronic Engineering (ICEEE)},
+    title={{Simulation of ARM and x86 microprocessors using in-order and out-of-order CPU models with Gem5 simulator}},
+    year={2018},
+    volume={},
+    number={},
+    pages={317-322},
+    keywords={circuit simulation;computer architecture;microcontrollers;out-of-order CPU models;Gem5 simulator;x86 computer processors;handheld devices;Intel-based microprocessors;computer architecture simulator;x86 microprocessor simulation;ARM microprocessor simulation;performance metrics;CPU;CPI;Computer architecture;Benchmark testing;Out of order;Computational modeling;Throughput;Measurement;ARM;x86;Gem5;CPI;O3;in-order},
+    doi={10.1109/ICEEE2.2018.8391354},
+    ISSN={},
+    month={May},
+}
+
+@online{gem5_main,
+        author = {},
+        year =         "2018",
+        title =        {{The gem5 Simulator:A modular platform for computer-system architecture research}},
+        \url =         "http://gem5.org/Main_Page",
+        lastaccessed = "August 29, 2018",
+}
+
+@inproceedings{Wu2016,
+    author = {Wu, Wei and Bosilca, George and vandeVaart, Rolf and Jeaugey, Sylvain and Dongarra, Jack},
+    title = {{GPU-Aware Non-contiguous Data Movement In Open~MPI}},
+    booktitle = {Proceedings of the 25th ACM International Symposium on High-Performance Parallel and Distributed Computing},
+    series = {HPDC '16},
+    year = {2016},
+    isbn = {978-1-4503-4314-5},
+    location = {Kyoto, Japan},
+    pages = {231--242},
+    numpages = {12},
+    url = {http://doi.acm.org/10.1145/2907294.2907317},
+    doi = {10.1145/2907294.2907317},
+    acmid = {2907317},
+    publisher = {ACM},
+    address = {New York, NY, USA},
+    keywords = {datatype, gpu, hybrid architecture, mpi, non-contiguous data},
+}
+
+@inproceedings{Gainaru2016,
+    author = {Gainaru, Ana and Graham, Richard L. and Polyakov, Artem and Shainer, Gilad},
+    title = {{Using InfiniBand Hardware Gather-Scatter Capabilities to Optimize MPI All-to-All}},
+    booktitle = {Proceedings of the 23rd European MPI Users' Group Meeting},
+    series = {EuroMPI 2016},
+    year = {2016},
+    isbn = {978-1-4503-4234-6},
+    location = {Edinburgh, United Kingdom},
+    pages = {167--179},
+    numpages = {13},
+    url = {http://doi.acm.org/10.1145/2966884.2966918},
+    doi = {10.1145/2966884.2966918},
+    acmid = {2966918},
+    publisher = {ACM},
+    address = {New York, NY, USA},
+    keywords = {All-to-All, Collective Communication, MPI, Network Offload},
+}
+
+@INPROCEEDINGS{tag-match,
+    author={M. G. F. {Dosanjh} and W. {Schonbein} and R. E. {Grant} and P. G. {Bridges} and S. M. {Gazimirsaeed} and A. {Afsahi}},
+    booktitle={2019 19th IEEE/ACM International Symposium on Cluster, Cloud and Grid Computing (CCGRID)},
+    title={{Fuzzy Matching: Hardware Accelerated MPI Communication Middleware}},
+    year={2019},
+    volume={},
+    number={},
+    pages={210-220},
+    keywords={application program interfaces;message passing;middleware;multiprocessing systems;multi-threading;MPI library;matching time;optimized proxy applications;hardware accelerated MPI communication middleware;contemporary parallel scientific codes;message passing;inter-process communication;MPI_THREAD_MULTIPLE;un-acceptable impacts;application performance;server-class CPUs;vector operations;message matching;point-to-point communication patterns;representative scientific applications;parallelization;exact matches;memory usage;fuzzy matching;Intel Xeon Phi cores;message processing infrastructure;parallel scientific codes;Message Matching;MPI;Networks;Vectors;KNL;Optimization;MPI Message Matching;Scalable System Software},
+    doi={10.1109/CCGRID.2019.00035},
+    ISSN={},
+    month={May},
+}
+
+@inproceedings{Berlin04,
+    Address = {Berlin, Heidelberg},
+    Author = {Santhanaraman, Gopalakrishnan and Wu, Jiesheng and Panda, Dhabaleswar K.},
+    Booktitle = {Recent Advances in Parallel Virtual Machine and Message Passing Interface},
+    Editor = {Kranzlm{\"u}ller, Dieter and Kacsuk, P{\'e}ter and Dongarra, Jack},
+    Pages = {47--56},
+    Publisher = {Springer Berlin Heidelberg},
+    Title = {{Zero-Copy MPI Derived Datatype Communication over InfiniBand}},
+    Year = {2004}
+}
+
+@INPROCEEDINGS{gem_detail,
+    author={Y. {Kodama} and T. {Odajima} and M. {Matsuda} and M. {Tsuji} and J. {Lee} and M. {Sato}},
+    booktitle={2017 IEEE International Conference on Cluster Computing (CLUSTER)},
+    title={{Preliminary Performance Evaluation of Application Kernels Using ARM SVE with Multiple Vector Lengths}},
+    year={2017},
+    volume={},
+    number={},
+    pages={677-684},
+    keywords={instruction sets;parallel processing;performance evaluation;preliminary performance evaluation;multiple vector lengths;modern high performance processors;Scalable Vector Extension;vector-length agnostic programming;hardware resource;vectorized SIMDcode;SIMD technology;performance improvement;physical registers;instruction issues;arithmetic operations;ARM SVE;application kernels;word length 128.0 bit to 2048.0 bit;Registers;Hardware;Out of order;Computer architecture;Kernel;wide SIMD;cycle-base simulator;out-of-order resources;multiple vector lengths},
+    doi={10.1109/CLUSTER.2017.93},
+    ISSN={2168-9253},
+    month={Sep.},}
+
+@article{sve-stencil,
+        Author = {Armejach, Adri{\`a} and Caminal, Helena and Cebrian, Juan M. and Langarita, Rub{\'e}n and Gonz{\'a}lez-Alberquilla, Rekai and Adeniyi-Jones, Chris and Valero, Mateo and Casas, Marc and Moret{\'o}, Miquel},
+        Journal = {The Journal of Supercomputing},
+        Month = {Apr},
+        Title = {{Using Arm's scalable vector extension on stencil codes}},
+        Year = {2019}
+}
+
+@INPROCEEDINGS{sve-Lattice,
+    author={N. {Meyer} and P. {Georg} and D. {Pleiter} and S. {Solbrig} and T. {Wettig}},
+    booktitle={2018 IEEE International Conference on Cluster Computing (CLUSTER)},
+    title={SVE-Enabling Lattice QCD Codes},
+    year={2018},
+    volume={},
+    number={},
+    pages={623-628},
+    keywords={lattice field theory;optimisation;parallel machines;physics computing;quantum chromodynamics;software performance evaluation;supercomputers;parallelization;particle physics simulations;vector instructions;scalable vector extension ISA;ARM-based processors;lattice QCD codes;optimization;SVE;Registers;Lattices;Matrix decomposition;Arrays;Layout;C++ languages;Parallel Programming;Vectorization;Lattice QCD},
+    doi={10.1109/CLUSTER.2018.00079},
+    ISSN={2168-9253},
+    month={Sep.},
+}
+
+@INPROCEEDINGS{gpu-reduce,
+    author={C. {Chu} and K. {Hamidouche} and A. {Venkatesh} and A. A. {Awan} and D. K. {Panda}},
+    booktitle={2016 16th IEEE/ACM International Symposium on Cluster, Cloud and Grid Computing (CCGrid)},
+    title={{CUDA Kernel Based Collective Reduction Operations on Large-scale GPU Clusters}},
+    year={2016},
+    volume={},
+    number={},
+    pages={726-735},
+    keywords={graphics processing units;message passing;parallel architectures;software libraries;CUDA kernel based collective reduction operations;large-scale GPU clusters;accelerators;NVIDIA GPU;HPC clusters;heterogeneous parallelism;GPU-aware MPI libraries;distributed parallel scientific applications;compute-oriented collective operations;MPI_allreduce;MPI_san;GPUDirect RDMA;graphics processing unit;high performance computing;computer unified device architecture;message passing interface;Graphics processing units;Kernel;Algorithm design and analysis;Libraries;Performance evaluation;Parallel processing;Acceleration;GPU;Kernel-based Collective Operations;High-Performance Computing (HPC);GPU-Aware MPI},
+    doi={10.1109/CCGrid.2016.111},
+    ISSN={},
+    month={May},
+}
+
+@inproceedings{Neutral_MPI_Reduction,
+    Address = {Berlin, Heidelberg},
+    Author = {Tr{\"a}ff, Jesper Larsson},
+    Booktitle = {Recent Advances in the Message Passing Interface},
+    Editor = {Keller, Rainer and Gabriel, Edgar and Resch, Michael and Dongarra, Jack},
+    Pages = {275--284},
+    Publisher = {Springer Berlin Heidelberg},
+    Title = {{Transparent Neutral Element Elimination in MPI Reduction Operations}},
+    Year = {2010}
+}
+
+@inproceedings{sparse-reduction,
+    Address = {Berlin, Heidelberg},
+    Author = {Hofmann, Michael and R{\"u}nger, Gudula},
+    Booktitle = {Recent Advances in Parallel Virtual Machine and Message Passing Interface},
+    Editor = {Lastovetsky, Alexey and Kechadi, Tahar and Dongarra, Jack},
+    Pages = {94--101},
+    Publisher = {Springer Berlin Heidelberg},
+    Title = {{MPI Reduction Operations for Sparse Floating-point Data}},
+    Year = {2008}
+}
+
+@inproceedings{Zhong-prrte,
+    author = {Zhong, Dong and Bouteiller, Aurelien and Luo, Xi and Bosilca, George},
+    title = {{Runtime Level Failure Detection and Propagation in HPC Systems}},
+    booktitle = {Proceedings of the 26th European MPI Users' Group Meeting},
+    series = {EuroMPI '19},
+    year = {2019},
+    isbn = {978-1-4503-7175-9},
+    location = {Z\&\#252;rich, Switzerland},
+    pages = {14:1--14:11},
+    articleno = {14},
+    numpages = {11},
+    url = {http://doi.acm.org/10.1145/3343211.3343225},
+    doi = {10.1145/3343211.3343225},
+    acmid = {3343225},
+    publisher = {ACM},
+    address = {New York, NY, USA},
+    keywords = {HPC runtime system, failure detection, fault tolerance, message propagation, reliable broadcast},
+}
+
+@online{mpi-forum,
+    author = {Message Passing Interface Forum},
+    year =         "November 15,2020",
+    title = {{MPI: A Message-Passing Interface Standard Version 4.0 (draft)}},
+    url =          {https://www.mpi-forum.org},
+}
+
+@inproceedings{Luo-adapt,
+    author = {Luo, Xi and Wu, Wei and Bosilca, George and Patinyasakdikul, Thananon and Wang, Linnan and Dongarra, Jack},
+    title = {{ADAPT: An Event-based Adaptive Collective Communication Framework}},
+    booktitle = {Proceedings of the 27th International Symposium on High-Performance Parallel and Distributed Computing},
+    series = {HPDC '18},
+    year = {2018},
+    isbn = {978-1-4503-5785-2},
+    location = {Tempe, Arizona},
+    pages = {118--130},
+    numpages = {13},
+    url = {http://doi.acm.org/10.1145/3208040.3208054},
+    doi = {10.1145/3208040.3208054},
+    acmid = {3208054},
+    publisher = {ACM},
+    address = {New York, NY, USA},
+    keywords = {GPU, MPI, collectives operations, event-driven, heterogeneous system, system noise},
+}
+
+@INPROCEEDINGS{Advanced-SIMD,
+    author={M. {Boettcher} and B. M. {Al-Hashimi} and M. {Eyole} and G. {Gabrielli} and A. {Reid}},
+    booktitle={2014 Design, Automation Test in Europe Conference Exhibition (DATE)},
+    title={{Advanced SIMD: Extending the reach of contemporary SIMD architectures}},
+    year={2014},
+    volume={},
+    number={},
+    pages={1-4},
+    keywords={instruction sets;microcontrollers;multiprocessing systems;parallel architectures;single instruction multiple data instruction set extensions;Berkeley dwarfs;cycle accurate simulation framework;ARGON;ARMv7 NEON based ISA extension;design complexity;silicon area;inter-lane instructions;per-lane predication;indexed memory accesses;data-level parallelism;general-purpose cores;microprocessors;contemporary SIMD architectures;advanced SIMD;Argon;Vectors;Registers;Benchmark testing;Computer architecture;Timing;Program processors},
+    doi={10.7873/DATE.2014.037},
+    ISSN={},
+    month={March},}
+
+@article{Auto-vectorization,
+        author = {Baghsorkhi, Sara S. and Vasudevan, Nalini and Wu, Youfeng},
+        title = {FlexVec: Auto-vectorization for Irregular Loops},
+        journal = {SIGPLAN Not.},
+        issue_date = {June 2016},
+        volume = {51},
+        number = {6},
+        month = jun,
+        year = {2016},
+        issn = {0362-1340},
+        pages = {697--710},
+        numpages = {14},
+        url = {http://doi.acm.org/10.1145/2980983.2908111},
+        doi = {10.1145/2980983.2908111},
+        acmid = {2908111},
+        publisher = {ACM},
+        address = {New York, NY, USA},
+        keywords = {AVX, SIMD, Vectorization, vector partitioning},
+    }
+@inproceedings{ARMv8-Architecture,
+    author = {Flur, Shaked and Gray, Kathryn E. and Pulte, Christopher and Sarkar, Susmit and Sezgin, Ali and Maranget, Luc and Deacon, Will and Sewell, Peter},
+    title = {{Modelling the ARMv8 Architecture, Operationally: Concurrency and ISA}},
+    booktitle = {Proceedings of the 43rd Annual ACM SIGPLAN-SIGACT Symposium on Principles of Programming Languages},
+    series = {POPL '16},
+    year = {2016},
+    isbn = {978-1-4503-3549-2},
+    location = {St. Petersburg, FL, USA},
+    pages = {608--621},
+    numpages = {14},
+    url = {http://doi.acm.org/10.1145/2837614.2837615},
+    doi = {10.1145/2837614.2837615},
+    acmid = {2837615},
+    publisher = {ACM},
+    address = {New York, NY, USA},
+    keywords = {ISA, Relaxed Memory Models, semantics},
+}
+
+@online{arm-v8-ref,
+    author  = "ARM",
+    year = "2018",
+    title = "Arm Architecture Reference Manual Armv8, for Armv8-A architecture profile",
+    url = "https://developer.arm.com/docs/ddi0487/latest/arm-architecture-reference-manual-armv8-for-armv8-a-architecture-profile",
+}
+
+@online{arm-v8-sve,
+    author ="ARM",
+    year = "2018",
+    title = {{ARM Architecture Reference Manual Supplement - The Scalable Vector Extension (SVE), for ARMv8-A}},
+    url = "https://developer.arm.com/docs/ddi0584/latest/arm-architecture-reference-manual-supplement-the-scalable-vector-extension-sve-for-armv8-a",
+}
+
+@ARTICLE{avx-info,
+author={A. {Sodani} and R. {Gramunt} and J. {Corbal} and H. {Kim} and K. {Vinod} and S. {Chinthamani} and S. {Hutsell} and R. {Agarwal} and Y. {Liu}},
+journal={IEEE Micro},
+title={{Knights Landing: Second-Generation Intel Xeon Phi Product}},
+year={2016},
+volume={36},
+number={2},
+pages={34-46},
+keywords={instruction sets;integrated circuit interconnections;microprocessor chips;Knights Landing;second generation Intel Xeon Phi product;high-performance computing;parallel workload;memory bandwidth;Knights Corner;self-booting standard CPU;Intel Xeon processor;power efficiency;vector instruction set;memory architecture;on-die interconnect;integrated on-package network fabric;word length 512 bit;Graphics processing units;Bandwidth allocation;Microprocessors;Program processors;Computer architecture;Resource management;Central Processing Unit;Memory architecture;Knights Landing;Intel Xeon Phi;parallel computing;high-performance computing},
+doi={10.1109/MM.2016.25},
+ISSN={},
+month={Mar},
+}
+
+@online{DynamoRIO,
+    year = "2016",
+    title = "DynamoRIO",
+    url = "https://github.com/DynamoRIO/dynamorio/wiki",
+    lastaccessed = "Nov 3, 2016"
+}
+
+
+@article{cebrian19,
+	Author = {Cebrian, Juan M. and Natvig, Lasse and Jahre, Magnus},
+	Journal = {The Journal of Supercomputing},
+	Month = {Apr},
+	Title = {Scalability analysis of AVX-512 extensions},
+	Year = {2019}
+	}
+
+@inproceedings{vla-stencil,
+ author = {Armejach, Adri\`{a} and Caminal, Helena and Cebrian, Juan M. and Gonz\'{a}lez-Alberquilla, Rekai and Adeniyi-Jones, Chris and Valero, Mateo and Casas, Marc and Moret\'{o}, Miquel},
+ title = {Stencil Codes on a Vector Length Agnostic Architecture},
+ booktitle = {Proceedings of the 27th International Conference on Parallel Architectures and Compilation Techniques},
+ series = {PACT '18},
+ year = {2018},
+ isbn = {978-1-4503-5986-3},
+ location = {Limassol, Cyprus},
+ pages = {13:1--13:12},
+ articleno = {13},
+ numpages = {12},
+ url = {http://doi.acm.org/10.1145/3243176.3243192},
+ doi = {10.1145/3243176.3243192},
+ acmid = {3243192},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {data-level parallelism, scalable vector extension, stencil computations, vector length agnostic},
+}
+
+@inproceedings{simd,
+ author = {Polychroniou, Orestis and Raghavan, Arun and Ross, Kenneth A.},
+ title = {Rethinking SIMD Vectorization for In-Memory Databases},
+ booktitle = {Proceedings of the 2015 ACM SIGMOD International Conference on Management of Data},
+ series = {SIGMOD '15},
+ year = {2015},
+ isbn = {978-1-4503-2758-9},
+ location = {Melbourne, Victoria, Australia},
+ pages = {1493--1508},
+ numpages = {16},
+ url = {http://doi.acm.org/10.1145/2723372.2747645},
+ doi = {10.1145/2723372.2747645},
+ acmid = {2747645},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {simd, vectorization, xeon phi},
+}
+@inproceedings{Vectorizing-Compilers,
+author = {Maleki, Saeed and Gao, Yaoqing and Garzarán, María and Wong, Tommy and Padua, David},
+year = {2011},
+month = {10},
+pages = {372-382},
+title = {An Evaluation of Vectorizing Compilers},
+journal = {Parallel Architectures and Compilation Techniques - Conference Proceedings, PACT},
+doi = {10.1109/PACT.2011.68}
+}
+
+@book{Dongarra-ScaLAPACK,
+ author = {Blackford, L. S. and Choi, J. and Cleary, A. and D'Azeuedo, E. and Demmel, J. and Dhillon, I. and Hammarling, S. and Henry, G. and Petitet, A. and Stanley, K. and Walker, D. and Whaley, R. C.},
+ editor = {Dongarra, Jack J.},
+ title = {ScaLAPACK User's Guide},
+ year = {1997},
+ isbn = {0-89871-397-8},
+ publisher = {Society for Industrial and Applied Mathematics},
+ address = {Philadelphia, PA, USA},
+}
+
+
+@article{Lim2018,
+	Author = {Lim, Roktaek and Lee, Yeongha and Kim, Raehyun and Choi, Jaeyoung},
+	Journal = {Cluster Computing},
+	Month = {Dec},
+	Number = {4},
+	Pages = {1785--1795},
+	Title = {An implementation of matrix--matrix multiplication on the Intel KNL processor with AVX-512},
+	Volume = {21},
+	Year = {2018}}
+
+  @inproceedings{Kim19,
+  author = {Kim, Raehyun and Choi, Jaeyoung and Lee, Myungho},
+  title = {Optimizing Parallel GEMM Routines Using Auto-Tuning with Intel AVX-512},
+  year = {2019},
+  isbn = {9781450366328},
+  publisher = {Association for Computing Machinery},
+  address = {New York, NY, USA},
+  url = {https://doi.org/10.1145/3293320.3293334},
+  doi = {10.1145/3293320.3293334},
+  booktitle = {Proceedings of the International Conference on High Performance Computing in Asia-Pacific Region},
+  pages = {101–110},
+  numpages = {10},
+  keywords = {AVX-512, matrix-matrix multiplication, Intel Xeon, Manycore, Autotuning, Intel Xeon Phi},
+  location = {Guangzhou, China},
+  series = {HPC Asia 2019}
+  }
+  @inproceedings{dong_prrte,
+  author = {Zhong, Dong and Bouteiller, Aurelien and Luo, Xi and Bosilca, George},
+  title = {Runtime Level Failure Detection and Propagation in HPC Systems},
+  year = {2019},
+  isbn = {9781450371759},
+  publisher = {Association for Computing Machinery},
+  address = {New York, NY, USA},
+  url = {https://doi.org/10.1145/3343211.3343225},
+  doi = {10.1145/3343211.3343225},
+  booktitle = {Proceedings of the 26th European MPI Users’ Group Meeting},
+  articleno = {Article 14},
+  numpages = {11},
+  keywords = {message propagation, HPC runtime system, failure detection, reliable broadcast, fault tolerance},
+  location = {Z\"{u}rich, Switzerland},
+  series = {EuroMPI ’19}
+  }
+
+  @online{Intelref,
+    author = "Intel",
+    year = "2019",
+    title = {{64-ia-32-architectures instruction set extensions reference manual}},
+    url = "https://software.intel.com/en-us/articles/intel-sdm",
+  }
+
+ @inproceedings{papi,
+	Address = {Berlin, Heidelberg},
+	Author = {Terpstra, Dan and Jagode, Heike and You, Haihang and Dongarra, Jack},
+	Booktitle = {Tools for High Performance Computing 2009},
+	Editor = {M{\"u}ller, Matthias S. and Resch, Michael M. and Schulz, Alexander and Nagel, Wolfgang E.},
+	Pages = {157--173},
+	Publisher = {Springer Berlin Heidelberg},
+	Title = {Collecting Performance Data with PAPI-C},
+	Year = {2010}}
+
+  @article{sergeev2018horovod,
+    Author = {Alexander Sergeev and Mike Del Balso},
+    Journal = {arXiv preprint arXiv:1802.05799},
+    Title = {Horovod: fast and easy distributed deep learning in {TensorFlow}},
+    Year = {2018}
+  }
+
+  @article{allreduce-optimal,
+ author = {Patarasuk, Pitch and Yuan, Xin},
+ title = {Bandwidth Optimal All-Reduce Algorithms for Clusters of Workstations},
+ year = {2009},
+ issue_date = {February 2009},
+ publisher = {Academic Press, Inc.},
+ address = {USA},
+ volume = {69},
+ number = {2},
+ issn = {0743-7315},
+ url = {https://doi.org/10.1016/j.jpdc.2008.09.002},
+ doi = {10.1016/j.jpdc.2008.09.002},
+ journal = {J. Parallel Distrib. Comput.},
+ month = feb,
+ pages = {117–124},
+ numpages = {8},
+ keywords = {Cluster of workstations, All-reduce, Collective communication, Tree topology}
+ }
+
+ @online{cnn_Tensorflow,
+   title = {{A benchmark framework for Tensorflow}},
+   url = "https://github.com/tensorflow/benchmarks",
+ }
+
+ @online{2dfft,
+   author = {Torsten Hoefler},
+   title = {MPI Derived Datatype (Benchmark) Page: 2D FFT Benchmark},
+   url = "http://unixer.de/research/datatypes/",
+ }
+
+ @inproceedings{mpi-ddt-benchmark,
+  author={Timo Schneider and Robert Gerstenberger and Torsten Hoefler},
+  title={{Micro-Applications for Communication Data Access Patterns and MPI Datatypes}},
+  year={2012},
+  month={Sep.},
+  pages={121-131},
+  volume={7490},
+  booktitle={Recent Advances in the Message Passing Interface - 19th European MPI Users' Group Meeting, EuroMPI 2012, Vienna, Austria, September 23-26, 2012. Proceedings},
+  location={Vienna, Austria},
+  publisher={Springer},
+  isbn={978-3-642-33517-4},
+  source={http://www.unixer.de/~htor/publications/},
+}
+
+@inproceedings{ddtHoefler,
+author = {Hoefler, Torsten and Gottlieb, Steven},
+title = {Parallel Zero-Copy Algorithms for Fast Fourier Transform and Conjugate Gradient Using MPI Datatypes},
+year = {2010},
+isbn = {3642156452},
+publisher = {Springer-Verlag},
+address = {Berlin, Heidelberg},
+pages = {132–141},
+numpages = {10},
+location = {Stuttgart, Germany},
+series = {EuroMPI'10}
+}
+
+@inproceedings{avxop,
+author = {Zhong, Dong and Cao, Qinglei and Bosilca, George and Dongarra, Jack},
+title = {Using Advanced Vector Extensions AVX-512 for MPI Reductions},
+year = {2020},
+isbn = {9781450388801},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3416315.3416316},
+doi = {10.1145/3416315.3416316},
+pages = {1–10},
+numpages = {10},
+keywords = {Intel AVX2/AVX-512, Long vector extension, Vector operation, MPI reduction operation, Single instruction multiple data, Instruction level parallelism},
+location = {Austin, TX, USA},
+series = {EuroMPI/USA '20}
+}
+
+@INPROCEEDINGS{luo-han,
+  author={Luo, Xi and Wu, Wei and Bosilca, George and Pei, Yu and Cao, Qinglei and Patinyasakdikul, Thananon and Zhong, Dong and Dongarra, Jack},
+  booktitle={2020 IEEE International Conference on Cluster Computing (CLUSTER)},
+  title={HAN: a Hierarchical AutotuNed Collective Communication Framework},
+  year={2020},
+  volume={},
+  number={},
+  pages={23-34},
+  doi={10.1109/CLUSTER49012.2020.00013}}
+
+  @article{HASHMI20201,
+  title = {FALCON-X: Zero-copy MPI derived datatype processing on modern CPU and GPU architectures},
+  journal = {Journal of Parallel and Distributed Computing},
+  volume = {144},
+  pages = {1-13},
+  year = {2020},
+  issn = {0743-7315},
+  doi = {https://doi.org/10.1016/j.jpdc.2020.05.008},
+  url = {https://www.sciencedirect.com/science/article/pii/S0743731520302872},
+  author = {Jahanzeb Maqbool Hashmi and Ching-Hsiang Chu and Sourav Chakraborty and Mohammadreza Bayatpour and Hari Subramoni and Dhabaleswar K. Panda},
+  keywords = {HPC, MPI, Derived datatypes, CPU and GPU, NVIDIA DGX2}
+  }
+
+  @INPROCEEDINGS{Bayatpour,
+    author={Bayatpour, Mohammadreza and Ghazimirsaeed, S. Mahdieh and Xu, Shulei and Subramoni, Hari and Panda, Dhabaleswar K.},
+    booktitle={2020 20th IEEE/ACM International Symposium on Cluster, Cloud and Internet Computing (CCGRID)},
+    title={Design and Characterization of InfiniBand Hardware Tag Matching in MPI},
+    year={2020},
+    volume={},
+    number={},
+    pages={101-110},
+    doi={10.1109/CCGrid49817.2020.00-83}}
+
+    @inproceedings{Hjelm,
+    author = {Hjelm, Nathan and Dosanjh, Matthew G. F. and Grant, Ryan E. and Groves, Taylor and Bridges, Patrick and Arnold, Dorian},
+    title = {Improving MPI Multi-Threaded RMA Communication Performance},
+    year = {2018},
+    isbn = {9781450365109},
+    publisher = {Association for Computing Machinery},
+    address = {New York, NY, USA},
+    url = {https://doi.org/10.1145/3225058.3225114},
+    doi = {10.1145/3225058.3225114},
+    booktitle = {Proceedings of the 47th International Conference on Parallel Processing},
+    articleno = {58},
+    numpages = {11},
+    location = {Eugene, OR, USA},
+    series = {ICPP 2018}
+    }
+ 
+    @online{mpistencil,
+    title = "Parallel Research Tools",
+    year = {2019},
+    url = "https://github.com/ParRes/Kernels",
+    lastaccessed = "2019"
+    }
+    
+    @INPROCEEDINGS{dongsve,
+      author={Zhong, Dong and Shamis, Pavel and Cao, Qinglei and Bosilca, George and Sumimoto, Shinji and Miura, Kenichi and Dongarra, Jack},
+      booktitle={2020 20th IEEE/ACM International Symposium on Cluster, Cloud and Internet Computing (CCGRID)}, 
+      title={Using Arm Scalable Vector Extension to Optimize OPEN MPI}, 
+      year={2020},
+      volume={},
+      number={},
+      pages={222-231},
+      doi={10.1109/CCGrid49817.2020.00-71}}
+
+    @article{ASHMI20201,
+    title = {FALCON-X: Zero-copy MPI derived datatype processing on modern CPU and GPU architectures},
+    journal = {Journal of Parallel and Distributed Computing},
+    volume = {144},
+    pages = {1-13},
+    year = {2020},
+    issn = {0743-7315},
+    doi = {https://doi.org/10.1016/j.jpdc.2020.05.008},
+    url = {https://www.sciencedirect.com/science/article/pii/S0743731520302872},
+    author = {Jahanzeb Maqbool Hashmi and Ching-Hsiang Chu and Sourav Chakraborty and Mohammadreza Bayatpour and Hari Subramoni and Dhabaleswar K. Panda},
+    keywords = {HPC, MPI, Derived datatypes, CPU and GPU, NVIDIA DGX2},
+    }
+    @INPROCEEDINGS{PRK2014,
+      author={Van der Wijngaart, Rob F. and Mattson, Timothy G.},
+      booktitle={2014 IEEE High Performance Extreme Computing Conference (HPEC)}, 
+      title={The Parallel Research Kernels}, 
+      year={2014},
+      volume={},
+      number={},
+      pages={1-6},
+      doi={10.1109/HPEC.2014.7040972}}
+
+    @online{ompigit,
+     title = {Open MPI main development repository},
+     year         = {2021},
+     url = {https://github.com/open-mpi/ompi}
+    }
+    @InProceedings{gabriel04ompi,
+      author       = {Edgar Gabriel and Graham E. Fagg and George Bosilca
+                      and Thara Angskun and Jack J. Dongarra and Jeffrey
+                      M. Squyres and Vishal Sahay and Prabhanjan Kambadur
+                      and Brian Barrett and Andrew Lumsdaine and Ralph
+                      H. Castain and David J. Daniel and Richard L. Graham
+                      and Timothy S. Woodall },
+      title        = {Open {MPI}: Goals, Concept, and Design of a Next
+                      Generation {MPI} Implementation},
+      booktitle    = {Proceedings, 11th European PVM/MPI Users' Group
+                      Meeting},
+      year         = 2004,
+      address      = {Budapest, Hungary},
+      pages        = {97--104},
+      month        = {September}
+    }
+    
+    @inproceedings{VectorArchitectures,
+    author = {Espasa, Roger and Valero, Mateo and Smith, James E.},
+    title = {Vector Architectures: Past, Present and Future},
+    year = {1998},
+    isbn = {089791998X},
+    publisher = {Association for Computing Machinery},
+    address = {New York, NY, USA},
+    url = {https://doi.org/10.1145/277830.277935},
+    doi = {10.1145/277830.277935},
+    booktitle = {Proceedings of the 12th International Conference on Supercomputing},
+    pages = {425–432},
+    numpages = {8},
+    location = {Melbourne, Australia},
+    series = {ICS '98}
+    }
+    @online{fujitsugit,
+    author = {Fujitsu},
+     title = {A64FX Microarchitecture Manual v1.4},
+     year         = {2021},
+     url = {https://github.com/fujitsu/A64FX/}
+    }
+
+\end{filecontents}
