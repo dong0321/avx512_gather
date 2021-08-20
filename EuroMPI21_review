@@ -20,12 +20,17 @@ SCORE: 5 (excellent)
 ----------- Overall evaluation -----------
 SCORE: -2 (reject)
 ----- TEXT:
-The paper proposes to use vector extensions to improve packing and unpacking of structured data (derived datatypes) in MPI. There is nothing new or surprising here, this has been done often, starting from at least
+The paper proposes to use vector extensions to improve packing and unpacking of structured data
+(derived datatypes) in MPI. There is nothing new or surprising here, this has been done often, starting from at least
 
 Jesper Larsson Träff, Rolf Hempel, Hubert Ritzdorf, Falk Zimmermann:
 Flattening on the Fly: Efficient Handling of MPI Derived Datatypes. PVM/MPI 1999: 109-116
 
-which did the same thing for real vector systems as suggested in Figure 3. The paper does not at all discuss how recursive or nested datatypes are to be handled. Also, pipelining, which is important for large data is not discussed. The related work overlooks numerous work, e.g., also by Gropp and by Panda et al., and by others, on the handling of derived datatypes, much of which would or already does allow the use of vector gather/scatter instructions.
+which did the same thing for real vector systems as suggested in Figure 3. The paper does not at
+all discuss how recursive or nested datatypes are to be handled. Also, pipelining, which is important
+ for large data is not discussed. The related work overlooks numerous work, e.g.,
+ also by Gropp and by Panda et al., and by others, on the handling of derived datatypes,
+ much of which would or already does allow the use of vector gather/scatter instructions.
 
 [19] is by Hofmann (not Michael), there may be other miscitations. And why is this work relevant here (there are extensions in
 
@@ -109,6 +114,11 @@ SCORE: 4 (good)
 ----------- Overall evaluation -----------
 SCORE: 2 (accept)
 ----- TEXT:
-This paper proposes new optimized strategies by utilizing the AVX-512 gather and scatter feature to improve the packing and unpacking operations for non-contiguous data movement.This optimization provides higher parallelism for a single node and achieves a more efficient communication scheme of message exchanging. The proposed optimization is implemented in OpenMPI and allows to achieve decent speedups against state-of-the-art memory copy based implementations on tested benchmarks and applications.
+This paper proposes new optimized strategies by utilizing the AVX-512 gather and scatter feature to
+improve the packing and unpacking operations for non-contiguous data movement.This optimization provides
+ higher parallelism for a single node and achieves a more efficient communication scheme of message exchanging.
+ The proposed optimization is implemented in OpenMPI and allows to achieve decent speedups against state-of-the-art
+ memory copy based implementations on tested benchmarks and applications.
 
-The paper is technically sound, quite well written, and certainly of relevance to the MPI community that faces more and more complexity in modern advanced architectures and processors used in HPC.
+The paper is technically sound, quite well written, and certainly of relevance to the MPI community
+that faces more and more complexity in modern advanced architectures and processors used in HPC.
