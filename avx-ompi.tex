@@ -192,7 +192,9 @@ with wide vector extension and specialized arithmetic operations, it calls for
 
 This paper tackles the above challenges and performs an extensive study of
 the novel gather and scatter feature from AVX-512 and its applicability
-for \mpi datatype communication. After that, we designed and implemented
+for \mpi datatype communication. Our design intends to optimize the pack and unpack operations for structured data
+after datatype engine preprocessed the recursive or nested datatypes.
+We designed and implemented
 a new strategy in a widespread \mpi implementation \ompi to provide our optimized \mpi datatype
 pack and unpack operation to speed up the communication that deals with non-contiguous small blocks datatype. To summarize, this paper makes
 the following contributions:
@@ -250,14 +252,17 @@ that \sve enables easy deployment of optimizations like loop unrolling,
 loop fusion, load trading or data reuse.
 %
 This work~\cite{dongsve} explored the usage and performance of \sve vector instructions to optimize
-memory access operation and reduction operation, simulation and benchmark results show that \sve long instruction can speedup related operations.
+memory access operation and reduction operation, simulation and benchmark results show that \sve
+long instruction can speedup related operations. However, this work mainly used emulation tools to
+study the performance benefits of such operation without further demonstration by experimenting
+with applications.
 %
 Hashmi~\cite{ASHMI20201} proposed a Fast and low-overhead communication framework
 for optimized zero-copy intra-node derived datatype communication on emerging CPU/GPU architectures.
 %
-Hofmann~\cite{sparse-reduction} presented a pipeline algorithm for \mpi Reduce
-that used a Run Length Encoding scheme to improve the global reduction of sparse
-floating-point data.
+%Hofmann~\cite{sparse-reduction} presented a pipeline algorithm for \mpi Reduce
+%that used a Run Length Encoding scheme to improve the global reduction of sparse
+%floating-point data.
 
 Additionally, different techniques and
 efforts have been studied to optimize \mpi communication operations.
@@ -397,7 +402,9 @@ To be noted, for each vector type we only need to generate the offsets once, and
 For the ``scatter\_unpack" procedure, we first load the packed contiguous data to a long vector and then use intrinsic
 \emph{\textit{\_mm512\_type\_scatter\_type (Dst, ..., offsets, ...)}} to store the data to non-contiguous addresses.
 For the remaining blocks with total size smaller than vector length, we explicitly use mask load and store operation to partially load/store the data from/to memory to maintain the integrity and correctness of our data.
-This highly expands the limited performance of memory operations for small non-contiguous memory blocks.
+This highly expands the limited performance of memory operations for small non-contiguous memory blocks. To be noted,
+this strategy primarily benefits datatypes with small block size, which requires at least two or more blocks can be encapsulated
+within a single long vector.
 
 \begin{algorithm}%[t]
 \caption{Gather/Scatter based pack and unpack algorithm}\label{fig:gs_algorithm}
@@ -646,10 +653,15 @@ They cover a wide range of common parallel application patterns, especially from
 This stencil implementation uses a for loop with memory copy function to pack the chunks for the non-contiguous data from east-west boundary.
 We optimized this packing implementation with the vector representation we described above.
 
-We conducted our experiment on the same Intel Xeon Gold6254 based cluster. Table~\ref{tab:ewconfig} shows our experiment configuration for this stencil application. We executed our experiments with 16 processes, we arrange processes grid as 2*8 in x/y direction. The stencil is a five points stencil using single precision executed for 100 iterations.
+We conducted our experiment on the same Intel Xeon Gold6254 based cluster. Table~\ref{tab:ewconfig} shows our experiment configuration for this stencil application.
+We executed our experiments with 16 processes with different processes grid arrangements and achieved
+similar results, here we present to show the result with process arrangement as 2*8 in x/y direction.
+The stencil is a five points stencil using single precision executed for 100 iterations.
 We demonstrate the effectiveness of \ourwork with three tests using different radius. As demonstrated in Figure~\ref{fig:stencil_diff_radius} we compared the performance of two implementations. We see that our gather and scatter
 optimized implementation decreases the packing and unpacking cost for communication during each computation step.
 Consequently, we improved collective operation that drives up the overall application performance by 10\% for all three cases.
+We expect the performance benefit continues for 3D stencil applications and could be even more obvious. Because for 3D
+stencil, each node needs to communicate with eights neighbors, and six of those communications use non-contiguous datatype.
 
 %MPI stencil execution on 2D grid
 %Number of ranks        = 16
