@@ -86,32 +86,43 @@ numbersep=5pt}
 \maketitle
 
 \begin{abstract}
-  Modern advanced architectures and processors in High-Performance Computing (\textbf{HPC})
-  are continually getting more complex to handle and satisfy the increasing computational and communication needs.
+  Modern architectures are continually in need of increasing their capabilities
+  to satisfy the increasing computational and communication needs. One of the
+  most straightforward approach to increase the computational capabilities is
+  the addition of \textbf{long vector instructions}.
   %
-  Innovative features and configuration options from novel architectures and processors
-  with \textbf{long vector extension} become much more important to exploit the potential peak performance.
+  Intel Xeon processors introduced Advanced Vector Extension 512
+  (\textbf{AVX-512}), which expanded vector length to 512 bits with more
+  powerful features. These new features allow for better compliance with rich
+  memory access patterns and long vector instructions, such as, gather load and
+  scatter store.
+  %Innovative features and configuration options from novel architectures and processors
+  %with \textbf{long vector extension} become much more important to exploit the potential peak performance.
   %
-  This brings new challenges and opportunities to the design of software and libraries,
-  especially regarding \mpi.
-  %
-  Intel Xeon processors introduced Advanced Vector Extension 512 (\textbf{AVX-512}), which expanded vector length to 512 bits with more powerful features.
-  These new features allow for better compliance with rich memory access patterns and long vector instructions, such as, gather load and scatter store.
+  The existence of such extensions brings new challenges and opportunities to
+  the design of software libraries and applications, and have been widely
+  exploited in the past. While support for such extensions in computationally
+  intensive libraries is now the norm, communications libraries, such as MPI, have
+  been less pervasive to the adoption of such extensions.
 
-  This paper proposes new optimized strategies by utilizing the AVX-512 gather and scatter feature to
-  improve the packing and unpacking operations for non-contiguous data movement.
+  This paper proposes new optimized strategies of utilizing the AVX-512 gather
+  and scatter feature to improve the packing and unpacking operations for
+  non-contiguous data movement.
   %
-  With this optimization, we provide higher parallelism for a single node and
-  achieve a more efficient communication scheme of message exchanging.
-  We implemented our proposed optimization in the context of \ompi, providing
-  efficient and scalable capabilities of AVX-512 usage and extending the possible
-  implementations of AVX-512 to a more extensive range of programming and execution paradigms.
-  %
-
-  The evaluation of the resulting software stack demonstrates our design
-  significantly improves the pack and unpack performance of default \ompi and achieves decent
-  speedups against state-of-the-art memory copy based implementations on tested benchmark and
+  We implemented these strategies in the context of \ompi, and showed in the
+  experimental section that we able to providing more efficient and scalable
+  message passing capabilities using these AVX-512 extensions, and that the
+  performance benefit extend outside the MPI library and directly impact the
   applications.
+  %and extending the possible implementations of AVX-512 to a more extensive
+  %range of programming and execution paradigms.
+  %With this optimization, we provide higher parallelism for a single node and
+  %achieve a more efficient communication scheme for message exchanges.
+  %
+  % The evaluation of the resulting software stack demonstrates our design
+  % significantly improves the pack and unpack performance of default \ompi and achieves decent
+  % speedups against state-of-the-art memory copy based implementations on tested benchmark and
+  % applications.
 
 \end{abstract}
 
@@ -121,18 +132,29 @@ Long Vector Operation, MPI Pack and Unpack, Gather and Scatter
 \end{IEEEkeywords}
 
 \section{Introduction}\label{sec:intro}
-Modern advanced architectures and processors are the driving force behind today’s
-large-scale High-Performance Computing (HPC) systems.
-The emergence of a broader range of parallel processor architectures continues to present opportunities to develop an effective programming model that provides access to those architectures' capabilities and novel features.
-The availability of these architectures in modern HPC systems has significantly enhanced
-scientists from different research domains to explore and investigate
-more complex and multiple levels of parallelism.
+
+Modern advanced architectures and processors are the driving force behind
+today’s large-scale High-Performance Computing (HPC) systems. The emergence of
+a broader range of parallel processor architectures continues to present
+opportunities to develop an effective programming model that provides access to
+those architectures' capabilities and novel features.
+%
+The availability of these architectures in modern HPC systems has significantly
+empowered scientists from different science domains to explore  more complex and
+multiple levels of parallelism.
 
 %
-Many researchers focus on exploiting data-level parallelism by vector execution and code vectorization~\cite{Vectorizing-Compilers, VectorArchitectures}, which leads HPC
-systems to equip with vector processors.
+Many researchers focus on exploiting data-level parallelism by vector execution
+and code vectorization~\cite{Vectorizing-Compilers, VectorArchitectures},
+encouraging hardware architects and vendors to expand on the current processor's
+vector capabilities either by providing a richer set of computational
+instructions or by optimizing the access (latency and bandwidth) to the main
+memory.
 %
-Compared to traditional scalar processors, extension vector processors support single Instruction Multiple Data (SIMD). More effective instructions operate on vectors with multiples elements involved rather than a single element that could achieve maximum computational power.
+Compared to traditional scalar processors, extension vector processors support
+the single Instruction Multiple Data (SIMD) execution mode, where in order to
+achieve maximum computational power arithmetic instructions operate on vectors
+with multiples elements rather than on a single element.
 %
 
 There are efforts to improve the vector processors by increasing the vector length and adding new vector instructions.
@@ -606,7 +628,6 @@ For this particular vector type it is constructed as show in table~\ref{tab:ewve
 \begin{table}
   \centering
   \caption{East-west vector data represent}\label{tab:ewvector}
-  \label{tab:parameters1}
   \small
   \begin{tabular}{cclll}
     \toprule
@@ -621,7 +642,6 @@ For this particular vector type it is constructed as show in table~\ref{tab:ewve
 \begin{table}[h]
   \centering
   \caption{\mpi stencil configuration and execution on 2D grid}\label{tab:ewconfig}
-  \label{tab:parameters1}
   \small
   \begin{tabular}{cclll}
     \toprule
