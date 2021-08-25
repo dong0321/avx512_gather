@@ -281,22 +281,39 @@ To summarize, this paper makes the following contributions:
 %\end{compactenum}
 
 The rest of this paper is organized as follows.
-Section~\ref{sec:related} presents related researches and efforts taking advantage of long vector extension from Intel and Arm for different applications and libraries, together with a survey about optimizations of \mpi that taking advantage of novel hardware.
-Section~\ref{sec:design} describes the design and implementation details of our optimized packing and unpacking methods in the scope of \ompi using AVX-512 intrinsic and instructions.
-Section~\ref{sec:experiments} describes the performance difference between default \ompi and \ourwork and provides a distinct insight into how the new vector instructions can benefit \mpi.
-Section~\ref{sec:application} illustrates the performance benefit we get from \ourwork with two applications that demonstrate that our design and implementation can speed up scientific applications.
+%
+Section~\ref{sec:related} presents related efforts taking advantage of long
+vector extension from Intel and Arm for different applications and libraries,
+together with a survey of existing work about \mpi optimizations taking
+advantage of novel hardware capabilities.
+%
+Section~\ref{sec:design} describes in details the design and implementation of
+our optimized packing and unpacking methods in the scope of \ompi using AVX-512
+intrinsic and instructions.
+%
+Section~\ref{sec:experiments} describes the performance difference between
+default \ompi and \ourwork and provides a distinct insight into how the new
+vector instructions can benefit \mpi.
+%
+Finally, Section~\ref{sec:application} illustrates the performance benefit we
+get from \ourwork with two applications that demonstrate that our design and
+implementation can speed up scientific applications, followed by the conclusion.
 
 \begin{figure*}[ht]
   \centering
   % trim={<left> <lower> <right> <upper>}
   \includegraphics[width=0.8\linewidth]{ddt_ompi.pdf}
-  \caption{Memory layout of datatype (contiguous and non-contiguous) in~\mpi}
+  \caption{Packing operation on different memory layout of datatype (contiguous and non-contiguous). The unpacking operation will do the exact opposite, scattering data from a packed, contiguous, buffer into the memory layout described in the \mpi datatype.}
   \label{fig:ddt_ompi}
 \end{figure*}
 
 \section{Related Work}\label{sec:related}
-In this section, we survey related work on techniques taking advantages of
-advanced hardware or architectures.
+
+\todo{reorder to follow a logica path, from the upper layers to the lowest}
+Taking advantage of processor's vector capabilities has a long track-record of
+uses at all the level of software development.
+%In this section, we survey related work on techniques taking advantages of
+%advanced hardware or architectures.
 %
 Lim~\cite{Lim2018} explored matrix matrix multiplication based on blocked matrix multiplication
 improves data reuse by data prefetching, loop unrolling, and the Intel AVX-512 to optimize
@@ -357,10 +374,16 @@ Hjelm~\cite{Hjelm} described a new RMA implementation for \ompi. The implementat
 and multi-threaded performance. It describes the design and implementation of RMA improvements
 and offers an evaluation that demonstrates scaling to 524,288 cores.
 
-In our work, we study AVX-512 enabled features more comprehensively and provide
-detailed analysis about the efficiency achievements of using related intrinsic.
-Our optimization is general at the processor instruction level, which is more
-straightforward, and uses CPU resources only without external or extra hardware.
+In this work we study the integration of vector gather/scatter capabilities
+into the \mpi datatype engine, and provide a detailed analysis about the
+potential efficiency gains.
+%
+Our approach takes advantage of Intel AVX512 instruction set, but the proposed
+optimization is portable across all processors providing support for
+gather/scatter instructions.
+
+% general at the processor instruction level, which is more straightforward, and
+% uses CPU resources only without external or extra hardware.
 
 \section{Design and implementation in \ompi}\label{sec:design}
 
