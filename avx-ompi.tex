@@ -134,7 +134,7 @@ Long Vector Operation, MPI Pack and Unpack, Gather and Scatter
 
 Modern advanced architectures and processors are the driving force behind
 today’s large-scale High-Performance Computing (HPC) systems. \todo{what's the link between what we do here and programming?}The emergence of
-a broader range of parallel processor architectures continues to present
+a broader range of advanced parallel processor architectures continues to present
 opportunities to develop an effective programming model that provides access to
 those architectures' capabilities and novel features.
 %
@@ -309,19 +309,14 @@ implementation can speed up scientific applications, followed by the conclusion.
 
 \section{Related Work}\label{sec:related}
 
-\todo{reorder to follow a logica path, from the upper layers to the lowest}
+%\todo{reorder to follow a logica path, from the upper layers to the lowest}
 Taking advantage of processor's vector capabilities has a long track-record of
 uses at all the level of software development.
 %In this section, we survey related work on techniques taking advantages of
 %advanced hardware or architectures.
-%
-Lim~\cite{Lim2018} explored matrix matrix multiplication based on blocked matrix multiplication
-improves data reuse by data prefetching, loop unrolling, and the Intel AVX-512 to optimize
-the blocked matrix multiplications.
-%
-Dosanjh et al.~\cite{tag-match} took advantage of using AVX vector operation for
-\mpi message matching to accelerate matches demonstrating the efficiency
-of long vectors.
+% cpu,infiniband level
+Hashmi~\cite{ASHMI20201} proposed a Fast and low-overhead communication framework
+for optimized zero-copy intra-node derived datatype communication on emerging CPU/GPU architectures.
 %
 This work~\cite{Berlin04} presented a new
 zero-copy scheme to efficiently implement datatype communication over InfiniBand
@@ -331,10 +326,18 @@ Mellanox's InfiniBand~\cite{Gainaru2016} explored the use of hardware scatter
 gather capabilities to eliminate CPU memory copies selectively and offload handling
 data scatter and gather to the supported Host Channel Adapter. This capability is
 used to optimize small data all-to-all collective.
+% avx
+Lim~\cite{Lim2018} explored matrix matrix multiplication based on blocked matrix multiplication,
+which improved data reuse by data prefetching, loop unrolling, and Intel AVX-512 instructions to optimize
+the blocked matrix multiplications.
 %
-In another work~\cite{sve-stencil}, they leveraged the characteristics of \sve to implement and optimize
-stencil computations, ubiquitous in scientific computing, which shows
-that \sve enables easy deployment of optimizations like loop unrolling,
+Dosanjh~\cite{tag-match} took advantage of using AVX vector operation for
+\mpi message matching to accelerate matches demonstrated the efficiency
+of long vectors.
+% sve
+In another work~\cite{sve-stencil}, they leveraged the characteristics of \sve to
+implement and optimize stencil computations, ubiquitous in scientific computing,
+which shows that \sve enables easy deployment of optimizations like loop unrolling,
 loop fusion, load trading or data reuse.
 %
 This work~\cite{dongsve} explored the usage and performance of \sve vector instructions to optimize
@@ -343,36 +346,34 @@ long instruction can speedup related operations. However, this work mainly used 
 study the performance benefits of such operation without further demonstration by experimenting
 with applications.
 %
-Hashmi~\cite{ASHMI20201} proposed a Fast and low-overhead communication framework
-for optimized zero-copy intra-node derived datatype communication on emerging CPU/GPU architectures.
-%
 %Hofmann~\cite{sparse-reduction} presented a pipeline algorithm for \mpi Reduce
 %that used a Run Length Encoding scheme to improve the global reduction of sparse
 %floating-point data.
 
 Additionally, different techniques and
 efforts have been studied to optimize \mpi communication operations.
-%
+% gpu rma
 Wu~\cite{wu2016} proposed GPU datatype engine that offloads the pack and unpack
 work to GPU to take advantage of GPU's parallel capability to provide
 high efficiency in-GPU pack and unpack.
+%
+Hjelm~\cite{Hjelm} described a new RMA implementation for \ompi. The implementation targets scalability
+and multi-threaded performance. It describes the design and implementation of RMA improvements
+and offers an evaluation that demonstrates scaling to 524,288 cores.
 %
 Luo~\cite{luo-han} presented a new hierarchical autotuned collective communication
 framework in \ompi, which selects suitable homogeneous collective communication
 modules as sub-modules for each hardware level, and uses collective operations from
 the sub-modules as tasks, and organizes these tasks to perform efficient hierarchical collective operations.
+% instruction level
+Bayatpour~\cite{Bayatpour} proposed a hardware tag matching aware \mpi library and discusses
+various aspects and challenges of leveraging this feature in \mpi library. Moreover, it characterizes
+hardware Tag Matching using different benchmarks and provides guidelines for the
+application developers to develop Hardware Tag Matching-aware applications to maximize their usage of this feature.
 %
 Zhong~\cite{avxop} explored the usage of long vector extension for reduction operation in \mpi, which
 speedups the local computation in \mpi that directly benefits the overall performance of
 collective reductions for applications.
-%
-Bayatpour~\cite{Bayatpour} proposed a hardware tag matching aware \mpi library and discusses various aspects and challenges of leveraging this feature in \mpi library. Moreover, it characterizes
-hardware Tag Matching using different benchmarks and provides guidelines for the
-application developers to develop Hardware Tag Matching-aware applications to maximize their usage of this feature.
-%
-Hjelm~\cite{Hjelm} described a new RMA implementation for \ompi. The implementation targets scalability
-and multi-threaded performance. It describes the design and implementation of RMA improvements
-and offers an evaluation that demonstrates scaling to 524,288 cores.
 
 In this work we study the integration of vector gather/scatter capabilities
 into the \mpi datatype engine, and provide a detailed analysis about the
