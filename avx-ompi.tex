@@ -725,20 +725,21 @@ scatters require the hardware to do more work than contiguous SIMD loads and
 stores, and will access more cache lines/pages (depending on the specific access
 pattern). This will cause higher instruction overheads.
 
+\todo{what exactly is this? there are sentences in the middle that just dont make sense there}
 To further explore and understand the behavior of non-contiguous data movement during pack and unpack operation,
 we conducted experiments with different gap length between blocks. This is because with different memory layouts and patterns, vectorization efficiency is not always as expected. Also, we want to investigate gather and scatter capability across cache lines. Generally speaking, gathering and scattering data cross cache lines reduces the effective memory bandwidth.
 We want to study if our gather and scatter optimization maintains good efficiency with a more complex memory layout.
 For our test platform, the cache line size is 64-bytes. We tested with vector datatype with block length fixed to one for MPI\_INT, and then we vary the stride to different cache line sizes ($1 \sim 4$) for both pack and unpack.
 
 Figure~\ref{fig:cachelines} shows the result for the \mpifunc{Pack} and \mpifunc{Unpack} with MPI default and \ourwork.
-Our optimization using intrinsic, which gives us complete control of the low-level details at the expense of productivity and portability.
+Our optimization using intrinsic, which gives us complete control of the low-level details at the expense of productivity and portability. \todo{what low-level details we control?}
 Overall, for both gather and scatter results demonstrate that with AVX-512 enabled operation it is faster than memory copy operation with different stride size cross cache lines.
 
-To be more specific, comparing MPI default Figure~\ref{fig:cachelines}(a) with gather pack Figure~\ref{fig:cachelines}(b) we noticed two aspects, (1) the performance for both implementation decreases as stride increases. One possible reason could be that data being gathered spread across multiple cache lines; software typically tests the completion mask to see if all elements have been read, and if not, loops back and re-executes the instruction. Consequently, the performance of a gather operation decreases as the distance (in memory) between data being gathered increases.
+To be more specific, comparing MPI default Figure~\ref{fig:cachelines}(a) with gather pack Figure~\ref{fig:cachelines}(b) we noticed two aspects, (1) the performance for both implementation decreases as stride increases. One possible reason could be that data being gathered spread across multiple cache lines; software typically tests the completion mask to see if all elements have been read, and if not, loops back and re-executes the instruction. Consequently, the performance of a gather operation decreases as the distance (in memory) between data being gathered increases. \todo{this explanation is based on what?}
 (2) Both implementations show performance slowdown but with different trends.
 We can see that memory copy has a significant performance reduction when the stride increased to across two cache lines. However, for the gather results the decrease is trivial.
 Also, the trend for memory copy performance decreases immediately after increased the stride longer than a single cache line.
-Moreover, for the gather pack case, the reduction is gradual.
+Moreover, for the gather pack case, the reduction is gradual.\todo{by here you lost me for good}
 For the unpacking operation, overall, it shows the same trend as packing, which shows performance decrease as stride increases. Furthermore, the speedup gain from scatter seems more evident than gather.
 
 \section{Application Evaluation}\label{sec:application}
@@ -828,7 +829,7 @@ Research Kernels (PRK)~\cite{mpistencil,PRK2014} -- are a suite of simple kernel
 of distributed and parallel computer systems, including all software and hardware components that make up the system.
 They cover a wide range of common parallel application patterns, especially from the area of HPC.
 This stencil implementation uses a for loop with memory copy function to pack the chunks for the non-contiguous data from east-west boundary.
-We optimized this packing implementation with the vector representation we described above.
+We optimized this packing implementation with the vector representation described above.
 
 We conducted our experiment on the same Intel Xeon Gold6254 based cluster. Table~\ref{tab:ewconfig} shows our experiment configuration for this stencil application.
 We executed our experiments with 16 processes with different processes grid arrangements and achieved
