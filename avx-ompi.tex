@@ -691,30 +691,39 @@ to perform packing and unpacking operation for a vector datatype with different 
 \end{figure*}
 
 We compare the packing and unpacking performance separately to highlight the
-benefit we get from gather load and scatter store. For the experiments, we use a
-vector datatype with primitive datatype MPI\_INT constructed with $block length
-= 2, gap = 1, count = 1024$, which means we pack two out of three integers for each
-repetition. Figure~\ref{fig:gather20} displays the performance comparison
-between \ompi default packing algorithm and AVX-512 gather packing algorithm.
-The X-axis shows the size of the packed buffer; Y-axis shows the actual
-bandwidth we get, which means the higher the better. We can see that by using
-gather feature our optimized packing strategy achieves $2.3 \sim 3.5$ times
-speedup. We also compare together with memory copy for contiguous data, which
-indicates the peak memory bandwidth. We can see that even for non-contiguous
-data, when the message size increased to 512KB, we achieve 41\% of the peak
-bandwidth. Figure~\ref{fig:scatter20} presents the performance comparison
-between \ompi default unpacking algorithm and AVX-512 scatter unpacking
-algorithm. We can see that by using scatter feature our optimized unpacking
-strategy achieves 3.4 times speedup. Comparing to memory copy bandwidth, our
-scatter method achieve 35\% the performance of peak bandwidth. We can see that
-unpacking acquires less efficiency than packing when compare to peak bandwidth
-from memory copy, which is because reading from non-contiguous addresses is more
-efficient than writing to non-contiguous addresses. Also, compared to contiguous
-memory copy, gathers and scatters require the hardware to do more work than
-contiguous SIMD loads and stores, and are likely to access more cache
-lines/pages (depending on the specific access pattern). This will cause higher
-instruction overheads. To be noted, for the memory copy operation we only copy
-two-thirds the data size of the total unpacked buffer.
+benefit we get from gather load and scatter store. The X-axis shows the size of
+the packed buffer; Y-axis shows the obtained bandwidth (the higher the better).
+%
+To provide a different view of the benefit of the approach, we also compare with
+the cost of the memory copy for contiguous data, which would indicates the peak
+memory bandwidth that can be obtained in the best-case scenario. For the memory
+copy operation we use the copy of a contiguous buffer with a length identical to
+the size of the memory layout described in the datatype. This translate to the
+same amount of data used in all cases, even when the number of cache lines
+affected by the operations will be different.
+
+For the experiments, we use a vector datatype with primitive datatype MPI\_INT
+constructed with $block length = 2, gap = 1, count = 1024$, which means we pack
+two out of three integers for each repetition.
+%
+Figure~\ref{fig:gather20} displays the pack performance comparison between \ompi
+default packing algorithm and AVX-512 gather packing algorithm. We can see that
+by using gather feature our optimized packing strategy achieves $2.3 \sim 3.5$
+times speedup. It is also interesting to note that  when the message size
+increased above 512KB, our approach achieves 41\% of the peak bandwidth.
+%
+Figure~\ref{fig:scatter20} presents the performance comparison between \ompi
+default unpacking algorithm and AVX-512 scatter unpacking algorithm. We can see
+that by using scatter feature our optimized unpacking strategy achieves 3.4
+times speedup. Comparing to memory copy bandwidth, our scatter method achieve
+35\% the performance of peak bandwidth.
+%
+We can see that unpacking is slightly less efficient than packing because
+reading from non-contiguous addresses is more efficient than writing to
+non-contiguous addresses. Also, compared to contiguous memory copy, gathers and
+scatters require the hardware to do more work than contiguous SIMD loads and
+stores, and will access more cache lines/pages (depending on the specific access
+pattern). This will cause higher instruction overheads.
 
 To further explore and understand the behavior of non-contiguous data movement during pack and unpack operation,
 we conducted experiments with different gap length between blocks. This is because with different memory layouts and patterns, vectorization efficiency is not always as expected. Also, we want to investigate gather and scatter capability across cache lines. Generally speaking, gathering and scattering data cross cache lines reduces the effective memory bandwidth.
